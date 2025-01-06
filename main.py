@@ -23,13 +23,17 @@ def get_graph(df):
     line_x = random.choice(categorical_cols)
     line_y = random.choice(numeric_cols)
     
+    
     print("line_x: ", line_x)
     print("line_y: ", line_y)
 
     st.title(f"{str(bar_x)} VS {str(bar_y)}")
     st.bar_chart(data=df, x=bar_x, y=bar_y, x_label=str(bar_x), y_label=str(bar_y))
+    
+    df_sorted = df.sort_values(by=line_x)
+
     st.title(f"{str(line_x)} VS {str(line_y)}")
-    st.line_chart(data=df, x=line_x, y=line_y, x_label=str(line_x), y_label=str(line_y))
+    st.line_chart(data=df_sorted, x=line_x, y=line_y, x_label=str(line_x), y_label=str(line_y))
     
     
     
