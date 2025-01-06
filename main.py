@@ -30,10 +30,10 @@ def get_graph(df):
     st.title(f"{str(bar_x)} VS {str(bar_y)}")
     st.bar_chart(data=df, x=bar_x, y=bar_y, x_label=str(bar_x), y_label=str(bar_y))
     
-    df_sorted = df.sort_values(by=line_x)
+    df_agg = df.groupby(line_x)[line_y].mean().reset_index()
 
     st.title(f"{str(line_x)} VS {str(line_y)}")
-    st.line_chart(data=df_sorted, x=line_x, y=line_y, x_label=str(line_x), y_label=str(line_y))
+    st.line_chart(data=df_agg, x=line_x, y=line_y, x_label=str(line_x), y_label=f"{line_y}")
     
     
     
