@@ -12,53 +12,6 @@ TOKEN = os.getenv('TOKEN')
 HUGGING_FACE_TOKEN = os.getenv('HUGGING_FACE_TOKEN')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
-# PROMPT = """Analyzing Social Media Data for Insights
-# I have social media data containing details about posts, reels, likes, comments, shares, and other engagement metrics. The data includes the following columns:
-
-# Content Type (carousel, reels, static images, etc.)
-# Post ID / Reel ID
-# Caption / Description
-# Number of Likes
-# Number of Comments
-# Number of Shares
-# Date and Time Posted
-# Reach (Number of Views or Impressions)
-# Follower Count at the Time of Posting
-# Content Category/Hashtags
-
-# I want to perform a detailed analysis to derive actionable insights, focusing on the following areas:
-
-# <Engagement Analysis>
-# Compare average likes, comments, and shares for reels vs. posts vs. stories.
-# Identify which content type drives the highest engagement rates.
-# Analyze how engagement changes over time (e.g., day of the week or time of day).
-
-# <Content Performance>
-# Determine which content categories or hashtags perform the best.
-# Analyze the relationship between caption length and engagement.
-# Identify top-performing posts or reels based on engagement metrics.
-
-# <Follower Interaction>
-# Analyze whether posts with higher engagement correlate with a growth in followers.
-# Understand the type of content that encourages users to share or comment more frequently.
-
-# <Trend Identification>
-# Spot trends in audience preferences (e.g., video content, carousel posts, etc.).
-# Find seasonal patterns or spikes in engagement for specific content types.
-
-# <Optimization Opportunities>
-# Suggest ideal posting times based on historical performance.
-# Recommend content types or formats to focus on for maximum reach and engagement.
-
-# < DATA >
-# {context}
-
-# < POST TYPE >
-# {question}
-
-# < DO NOT PROVIDE THE ANSWER IN CODE PROVIDE ANSWER IN HUMAN LANGUAGE AND DO NOT INCLUDE ANY UNNECESSARY DETAILS OR NOTES. >
-# """
-
 PROMPT = """
 <DATA>
 {context}
