@@ -12,6 +12,75 @@ TOKEN = os.getenv('TOKEN')
 HUGGING_FACE_TOKEN = os.getenv('HUGGING_FACE_TOKEN')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
+# PROMPT = """Analyzing Social Media Data for Insights
+# I have social media data containing details about posts, reels, likes, comments, shares, and other engagement metrics. The data includes the following columns:
+
+# Content Type (carousel, reels, static images, etc.)
+# Post ID / Reel ID
+# Caption / Description
+# Number of Likes
+# Number of Comments
+# Number of Shares
+# Date and Time Posted
+# Reach (Number of Views or Impressions)
+# Follower Count at the Time of Posting
+# Content Category/Hashtags
+
+# I want to perform a detailed analysis to derive actionable insights, focusing on the following areas:
+
+# <Engagement Analysis>
+# Compare average likes, comments, and shares for reels vs. posts vs. stories.
+# Identify which content type drives the highest engagement rates.
+# Analyze how engagement changes over time (e.g., day of the week or time of day).
+
+# <Content Performance>
+# Determine which content categories or hashtags perform the best.
+# Analyze the relationship between caption length and engagement.
+# Identify top-performing posts or reels based on engagement metrics.
+
+# <Follower Interaction>
+# Analyze whether posts with higher engagement correlate with a growth in followers.
+# Understand the type of content that encourages users to share or comment more frequently.
+
+# <Trend Identification>
+# Spot trends in audience preferences (e.g., video content, carousel posts, etc.).
+# Find seasonal patterns or spikes in engagement for specific content types.
+
+# <Optimization Opportunities>
+# Suggest ideal posting times based on historical performance.
+# Recommend content types or formats to focus on for maximum reach and engagement.
+
+# < DATA >
+# {context}
+
+# < POST TYPE >
+# {question}
+
+# < DO NOT PROVIDE THE ANSWER IN CODE PROVIDE ANSWER IN HUMAN LANGUAGE AND DO NOT INCLUDE ANY UNNECESSARY DETAILS OR NOTES. >
+# """
+
+PROMPT = """
+<DATA>
+{context}
+</Data>
+
+<Post Type>
+{question}
+</Post Type>
+
+
+Analyze the provided social media data to extract actionable insights based on the following criteria:
+   - Evaluate which content type (posts, reels, stories) receives the highest engagement in terms of likes, comments, and shares.
+   - Assess the performance impact of post type (e.g., image vs. carousel) on engagement metrics.
+   - Determine which post typre generate the most engagement and interactions.
+   - Analyze engagement patterns across different content formats: static images, carousels, and Reels.
+   - Identify which type of content leads to traffic or engagements, focusing on likes, comments on post.
+   - Detect posts or reels with significantly high or low engagement, exploring possible reasons for these anomalies.
+ 
+*Expected Output:*
+Provide a detailed textual analysis categorized under each point above. Include percentages, comparisons, and trends to ensure insights are actionable. No calculations or coding or explanation required; solely rely on data for insights.
+"""
+
 FLOW = {
   "id": "100d6a1e-60d1-4161-a5fe-097b8351aa0b",
   "data": {
@@ -3306,7 +3375,7 @@ class LangFlow_Helper:
         "Prompt-nAHMf": {
           "context": "",
           "question": "",
-          "template": "{context}\n\n---\n\n Do not provide anyother code or justifications for your answer just proivde the analysis of the provided input, do all the necessary calculations but do not show include them in your response directly provide your ananlysis of the data based on input. \n\nAccepts post types (e.g., carousel, reels, static images) as input.\n\nQueries the dataset in Astra DB to calculate average engagement metrics for each\npost type.\n\nExample outputs:\n● Carousel posts have 20% higher engagement than static posts.\n● Reels drive 2x more comments compared to other formats.\n\n At the end compare the input post type with all the available post types, In which the detailed analysis of input post type is necessary and othes should be described in very short.\n\nQuestion: {question}\n\nAnswer: "
+          "template": PROMPT,
         },
         "SplitText-RuKuP": {
           "chunk_overlap": 200,
